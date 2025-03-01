@@ -16,7 +16,7 @@ class CalculatorApp extends StatelessWidget {
 
 class CalculatorMain extends StatefulWidget {
   @override
-  _CalcualtorMainState createState() => _CalculatorMainState();
+  _CalculatorMainState createState() => _CalculatorMainState();
 }
 
 class _CalculatorMainState extends State<CalculatorMain> {
