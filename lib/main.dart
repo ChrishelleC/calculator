@@ -58,7 +58,45 @@ class _CalculatorMainState extends State<CalculatorMain> {
           operator = value;
           input = "";
         }
+      } else {
+        input +=value;
       }
     });
+  }
+  Widget buildButton(String text){
+    return Expanded(
+      child: ElevatedButton(
+        onPressed: () => buttonPressed(text),
+        child: Text(text, style: TextStyle(fontSize: 24)),
+      ),
+      );
+  }
+   @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Simple Calculator")), 
+      body: Column(
+        children: [
+          Expanded(
+          child: Container(
+            alignment: Alignment.centerRight,
+            padding: EdgeInsets.all(20),
+            child: Text(
+              input.isEmpty ? output : input,
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            ),
+          ),
+          ),
+          //buttons for calculator
+          Column(
+            children: [
+              for (var row in [["7", "8", "9", "/"], ["4", "5", "6", "*"], ["1", "2", "3", "-"], ["C", "0", "=", "+"]])
+              Row(
+                children: row.map((text) => buildButton(text)).toList(),
+                )
+            ],)
+        ],
+        ),
+        );
   }
 }
